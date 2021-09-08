@@ -1,10 +1,11 @@
 # vscp-python-send-veml6070
 Send UV index reading from a veml6070 to a VSCP daemon 
 
+![](./images/veml6070.jpg)
+
 ## credits
 
-This code is built on code made by ControlEverything.com.
-# https://www.controleverything.com/products
+This code is built on code made by [ControlEverything.com](https://www.controleverything.com/products).
 
 ## Installation and setup
 
@@ -47,6 +48,10 @@ You also need to install smbus support for python. Install with
 pip3 install smbus
 ```
 
+![](./images/uvindex.png)
+
+UV index is a defined as a value in the range 0-15 where >= 11 is extreme values and 0-2 low values. You may need to set the SCALING_FACTOR in the source file for this code to work correctly with your hardware.
+
 ## usage
 
 ```bash
@@ -80,9 +85,9 @@ Send a reading to a VSCP daemon on the local host using the interface GUID and s
 
 where default values are used for the sensorindex, zone and subzone.
 
----
-
-This file is part of the [vscp project](https://www.vscp.org)
+## Links
+  - [Designing the VEML6070 UV Light Sensor
+Into Applications](https://www.vishay.com/docs/84310/designingveml6070.pdf)
 
 ---
 
