@@ -86,14 +86,14 @@ class VEML6070():
       return {'u' : uvlight}
 
 
+from vscp_send_veml6070 import VEML6070
+
+# Initialize
+veml6070 = VEML6070() 
+
 
 def main():
     
-  from veml6070 import VEML6070
-
-  # Initialize
-  veml6070 = VEML6070() 
-
   # Connect to VSCP daemon
   tn = telnetlib.Telnet(host, 9598)
   tn.read_until("+OK".encode('ascii'),2)
