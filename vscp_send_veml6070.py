@@ -110,7 +110,8 @@ def main():
   tn.write("pass " .encode('ascii') + password .encode('ascii') + "\n".encode('ascii'))
   tn.read_until("+OK - Success.".encode('ascii'),2)
 
-  light = veml6070.read_uvlight() * SCALING_FACTOR
+  light = veml6070.read_uvlight()
+  light['u'] = light['u'] * SCALING_FACTOR
   print("UV Light Level : %d" %(light['u']))
 
   event = "3,"                # Priority=normal
