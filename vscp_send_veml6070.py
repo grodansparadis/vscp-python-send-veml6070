@@ -19,7 +19,12 @@ import telnetlib
  
 # Get I2C bus
 bus = smbus.SMBus(1)
- 
+
+# This scaling factor is used to set UX Index from read values. The UV index
+# range from 0-15. See https://www.vishay.com/docs/84310/designingveml6070.pdf 
+# for an explanation on this.
+SCALING_FACTOR = 1
+
 # I2C address of the device
 VEML6070_DEFAULT_ADDRESS				= 0x38
  
@@ -105,11 +110,11 @@ def main():
   tn.write("pass " .encode('ascii') + password .encode('ascii') + "\n".encode('ascii'))
   tn.read_until("+OK - Success.".encode('ascii'),2)
 
-  light = veml6070.read_uvlight()
+  light = veml6070.read_uvlight() * SCALING_FACTOR
   print("UV Light Level : %d" %(light['u']))
 
   event = "3,"                # Priority=normal
-  event += "90,52,"         # Level II measurement (string), Illuminance    
+  event += "90,52,"           # Level II measurement (string), Illuminance    
   event += "0,"               # Use obid of interface
   event += ","                # DateTime
   event += "0,"               # Use interface timestamp
