@@ -14,7 +14,7 @@ i2c support must be enabled. Use raspi-config to enable i2c.
 To verify your hardware you can use i2ctools. Install with
 
 ```
-sudo apt install i2ctools
+sudo apt install i2c-tools
 ```
 
 scan bus with
